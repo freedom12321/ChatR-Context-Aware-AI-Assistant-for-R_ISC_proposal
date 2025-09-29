@@ -22,27 +22,24 @@ It is important to cover:
 ```
 
 
-The Problem
+**The Problem**
 
 R users need smarter assistance to navigate complex workflows. Modern R projects often involve multiple steps: data import, transformation, modeling, visualization, and reporting, often across dozens of packages. Users must constantly refer to documentation, search for appropriate functions, debug errors, and integrate code from various sources. This process is fragmented and time-consuming. While generic AI copilots (like ChatGPT or GitHub Copilot) can generate R code, they lack context of the user’s session and often hallucinate facts or functions that don’t exist. They cannot directly read the user’s variables or installed packages, and their suggestions may be incorrect or not tailored to the specific task. Moreover, they do not handle package version differences—critical for reproducibility, since many analyses rely on older package versions to reproduce published results.
 
-What the problem is.
+**What the problem is**
 There is currently no R-specific AI assistant that operates within the R environment to provide reliable, context-rich help. Existing tools either give generic answers that may be outdated or wrong, or require users to manually search through CRAN documentation, StackOverflow, and GitHub issues. Coverage is another limitation: R’s ecosystem has thousands of CRAN packages, including obscure or newly updated ones, many of which are unlikely to appear in generic LLM training data. This gap makes support for specialized research workflows weak or misleading.
 
-Who it affects.
+**Who it affects**
 This affects a broad spectrum of R users—data scientists, statisticians, social scientists, and domain specialists in fields such as bioinformatics, epidemiology, and finance. Novice users are discouraged by opaque error messages and steep learning curves, while advanced users waste time context-switching between coding and searching. In high-stakes settings such as healthcare or government, the inability to use cloud-based copilots (due to privacy/security restrictions) further excludes many from AI support.
 
-Why it is a problem.
+**Why it is a problem**
 The consequences are inefficiency and barriers to entry. Without intelligent support, advanced R users spend significant time troubleshooting, while beginners struggle to locate the right functions or debug errors. This slows down research and development, reduces reproducibility, and ultimately hinders adoption of R. In sensitive environments, sending proprietary algorithms or data to external APIs is unacceptable, which means existing AI copilots are simply unusable.
 
-What solving the problem will enable.
+**What solving the problem will enable**
 If addressed, users would gain an assistant aware of their session state, capable of retrieving authoritative documentation, sensitive to package versions, and able to execute R code safely. This would enhance productivity, lower barriers for newcomers, and improve reproducibility across scientific and industry domains. An integrated solution would especially benefit restricted or offline environments by offering a local, privacy-preserving mode of operation.
 
-Summary of existing work and previous attempts.
+**Summary of existing work and previous attempts**
 The R community has begun exploring AI integrations, but current solutions only address parts of the problem. The {ragnar} package provides retrieval-augmented generation (RAG) workflows in R, making it possible to embed and retrieve domain-specific documentation. The {tidyprompt} package focuses on prompt engineering: it introduces “prompt wraps” that not only structure the input prompt but also add extraction and validation functions on the LLM’s output, enabling features like structured responses, retries, reasoning modes, autonomous R function calling, and R code evaluation. The {ellmer} package makes it easy to use LLMs from R, supporting multiple providers and offering capabilities such as streaming output, tool/function calling, and structured data extraction. Finally, the {btw} package helps capture and describe a user’s computational environment—gathering context about objects, package documentation, and the working directory—and integrates with {ellmer} as a tool provider.
 
 These efforts demonstrate strong community interest in AI-assisted coding in R, but they remain fragmented. {ragnar}, {tidyprompt}, {ellmer}, and {btw} each contribute valuable functionality, yet they require users to manually assemble components and still do not deliver a dedicated, session-aware coding assistant. In particular, coverage gaps remain: for example, {btw} focuses on installed packages, with uninstalled ones limited to metadata lookups rather than full vignettes or examples. No existing tool yet combines authoritative CRAN knowledge, version-aware reproducibility, coverage of obscure or recently updated packages, privacy-preserving offline operation, local context inspection, and direct tool execution into a coherent workflow.
-
-R Core support.
-As this proposal does not involve direct changes to R itself, no letter of support from an R Core member is required at this stage
 
