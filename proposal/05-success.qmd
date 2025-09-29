@@ -8,81 +8,22 @@ thorough understanding going in of what the risks are to delivery
 <!--
 What does success look like?
 -->
-We will consider the project successfully completed when the following are delivered:
 
-1. **ChatR Package v1.0 Released**  
-   A fully functional R package available on CRAN or R-universe that includes:  
-   - Context-aware chat assistant functionality  
-   - Support for documentation/how-to questions, error debugging, and RAG-grounded responses  
-   - Both offline mode (local knowledge base and local/optional models) and online mode (API keys).  
-
-2. **Integrated Agent Ecosystem Support**  
-   Demonstrated interoperability with IDEs and agent frameworks. For example, ChatR running inside VS Code or via the Model Context Protocol (MCP) and LangChain pipelines.  
-
-3. **Error Diagnosis Module**  
-   Robust error handling where ChatR explains or suggests fixes for at least 80% of a defined test suite of common R errors (e.g., “object not found,” “factor level not present,” file I/O errors).  
-
-4. **Knowledge Base Coverage**  
-   Indexed coverage of:  
-   - Base R and recommended packages  
-   - At least 100 popular CRAN packages (e.g., ggplot2, dplyr, Shiny, data.table, lme4)  
-   - Selected Bioconductor documentation.  
-   A documented process for updating/expanding this knowledge base will also be provided.  
-
-5. **Documentation & Examples**  
-   Complete user-facing vignettes and developer docs, plus at least one blog post announcing ChatR with walkthroughs of use cases.  
-
-6. **Community Engagement**  
-   Tangible evidence of adoption and interest (e.g., GitHub stars/forks, issues or PRs from external users, mentions in R community forums).  
+- Release **ChatR v1.0** (CRAN/Universe) with context-aware assistance, online/offline modes, error diagnosis, broad KB coverage, documentation, and evidence of community adoption.  
 
 ## Measuring success
 <!--
 How will we know when success is achieved, what markers can we use
 along the way
 -->
-We will evaluate success using multiple methods:
 
-- **Automated Evaluation Metrics**  
-  An LLM-judge framework will compare ChatR’s answers on 50–100 R questions against baseline LLM responses. Target: ≥80% correctness and ≥20% improvement over baseline (e.g., ChatGPT without context).  
+- Achieve ≥80% accuracy vs baseline, positive user feedback (≥4/5), ≥50 testers with external contributions, and case studies showing time savings and novice accessibility.  
 
-- **User Testing & Surveys**  
-  Volunteer R users will test ChatR and complete surveys rating usefulness and accuracy (1–5 scale). Success target: mean scores ≥4 for both metrics.  
-
-- **Adoption Indicators**  
-  Track GitHub stars, package downloads, and forum activity. A milestone is ≥50 users testing ChatR and at least one external pull request or extension idea.  
-
-- **Qualitative Feedback & Case Studies**  
-  Documented “success stories” where ChatR demonstrably reduces time-to-solution (e.g., cutting a 30-minute workflow down to 5 minutes).  
-
-- **Beginner Impact**  
-  Evidence that novice users successfully complete tasks they otherwise could not, highlighting ChatR’s role in democratizing R access.  
 
 ## Future work
 <!--
 How could this be extended / developed in the future by yourself
 and/or the community in general?
 -->
-This 12-month grant lays the foundation, but ChatR is designed to evolve. Potential extensions include:
 
-- **Long-term Maintenance**  
-  Establish a community-driven maintenance team under R Consortium guidance. Future grants or sponsorships may support continued development.  
-
-- **Improved AI Capabilities**  
-  Fine-tuning open models on R-specific Q&A data for stronger offline performance and exploring model compression for lightweight deployment.  
-
-- **Cross-Ecosystem Expansion**  
-  Extending the architecture to other languages (e.g., Python, Julia) or hybrid environments (RMarkdown with R/Python).  
-
-- **Deeper RStudio/Posit Integration**  
-  Working with Posit to embed ChatR in RStudio’s Help pane or as an official add-in.  
-
-- **Community Knowledge Base**  
-  Mechanisms for user-contributed Q&A to expand ChatR’s intelligence over time.  
-
-- **Enhanced Features**  
-  Multi-modal support (plots/images), “learning mode” for didactic explanations, stronger privacy controls, and accessibility enhancements like voice input.  
-
-- **Impact Studies**  
-  Partnering with educators to measure ChatR’s effect on R learning and productivity in academic or professional settings.  
-
-By combining measurable outcomes with clear pathways for growth, this project ensures immediate community value and a sustainable roadmap that maximizes the impact of R Consortium’s investment.
+- Sustain through a community-led team, improved AI models, cross-language expansion, deeper IDE integration, community-driven KB, new features (multi-modal, learning mode), and educational impact studies.  

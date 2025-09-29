@@ -1,14 +1,3 @@
-# Signatories
-<!--
-This section provides the ISC with a view of the support received from
-the community for a proposal. Acceptance isn't predicated on
-popularity but community acceptance is important. Willingness to
-accept outside input is also a good marker for project delivery.
-
-An optional section would be for R-Core signatories where changes to R
-are proposed.
--->
-
 ## Project team
 <!--
 Who are the people responsible for actually delivering the project if
@@ -22,17 +11,4 @@ Michael Lawrence (Mentor, R Core, Genentech) – Provides guidance on R internal
 Gabriel Becker (Mentor, R contributor) – Advises on architecture, evaluation, and community engagement.
 
 Hanxia Li (Developer, Georgia Institute of Technology) – Responsible for design, implementation, and delivery of ChatR.
-
-## Contributors
-<!--
-Who are the people who have actively helped with this proposal but
-won't necessarily be on the core project team later?
--->
-
-## Consulted
-<!--
-Who has been given the opportunity to provide feedback on the
-proposal? This should include any R Consortium & ISC members who the
-proposal has been discussed with.
--->
 
