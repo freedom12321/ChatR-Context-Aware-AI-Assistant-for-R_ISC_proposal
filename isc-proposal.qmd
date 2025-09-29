@@ -1,11 +1,16 @@
 ---
-title: "Proposal Title"
+title: "ChatR: A Context-Aware R Programming Assistant"
 author:
-  - name: Annie Easley
-    orcid: 5555-5555-5555-5555
+  - name: "Michael Lawrence"
     affiliations:
-      - "Lewis Research Center, National Aeronautics and Space Administration"
-
+      - "R Core"
+      - "Genentech"
+  - name: "Gabriel Becker"
+    affiliations:
+      - "R contributor"
+  - name: "Hanxia Li"
+    affiliations:
+      - "Georgia Institute of Technology"
 date: today
 date-format: iso
 format:

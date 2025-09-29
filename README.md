@@ -1,62 +1,56 @@
-# isc-proposal
+# ChatR: A Context-Aware R Programming Assistant  
 
-[![build-status](https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/actions/workflows/publish-proposal.yaml/badge.svg)](https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/actions/workflows/publish-proposal.yaml)
+## Overview  
 
-This repository is a boilerplate repository that helps you prepare your proposal for the [R Consortium](https://www.r-consortium.org).
+**ChatR** is an open-source, context-aware intelligent assistant designed for the R programming ecosystem.  
+Unlike generic AI copilots, ChatR operates **inside the R environment**, providing reliable, reproducible, and privacy-respecting support for R workflows in statistics, bioinformatics, social sciences, and beyond.  
 
-## Background
+## Why ChatR?  
 
-Set up in 2015, the R Consortium is an organisation set up to help support the R Foundation, the R Community, and R users.
+R users today face growing challenges:  
+- Complex multi-step workflows across dozens of packages  
+- Constant need to search through documentation and debug errors  
+- AI copilots that hallucinate, ignore session context, or fail in secure/offline environments  
 
-> The primary purpose of the R Consortium (collectively, the “Purpose”) is to:
->
->(a) advance the worldwide promotion of and support for the R open source language and environment as the preferred language for statistical computing and graphics (the “Environment”);
->
->(b) establish, maintain, seek support for, and develop infrastructure projects and technical and infrastructure collaboration initiatives related to the Environment, and such other initiatives as may be appropriate to support, enable and promote the Environment;
->
->(c) encourage and increase user adoption, involvement with, and contribution to, the Environment;
->
->(d) facilitate communication and collaboration among users and developers of the Environment, the R Consortium and the R Foundation for Statistical Computing (the “R Foundation”);
->
->(e) support and maintain policies set by the Board; and
->
->(f) undertake such other activities as may from time to time be appropriate to further the purposes and achieve the goals set forth above.
->
->In furtherance of these efforts, the R Consortium shall seek to solicit the participation of all interested parties on a fair, equitable and open basis.
+These issues slow down experts, discourage beginners, and block adoption in sensitive domains (e.g., healthcare, government).  
 
-_Source: [R Consortium Bylaws, Section 1.4](https://r-consortium.org/rc-docs/R-Consortium-Bylaws-7-9-2024.pdf)_
+## Our Solution  
 
-Delivery of the technical aspects for R Consortium's projects is overseen by the Infrastructure Steering Committee (ISC). The ISC is set up to receive, select, and manage projects that deliver upon the aims of the Consortium. The ISC will have an ongoing call for proposals and will select proposals to move into project stage approximately every six months. Within the process notes, it does say that if a proposal is unlikely to get funded then the proposers will be notified as soon as possible, partially so that re-submission can happen in the event fixable issues.
+ChatR closes this gap by delivering:  
+- **R session awareness** – understands your objects, packages, and errors  
+- **Retrieval-augmented generation (RAG)** – grounded in official docs and vignettes  
+- **Safe tool execution** – CRAN search, environment inspection, code sandboxing  
+- **Reproducible, cited answers** – to strengthen trust and transparency  
+- **Offline mode** – smaller local LLMs for restricted environments  
+- **IDE integration** – RStudio add-in, VS Code extension, MCP/LangChain support  
 
-## Proposals
+## Development Plan  
 
-Here we detail useful guidance notes on making proposals to the ISC but you should always consult the [ISC Grant Program](https://r-consortium.org/all-projects/callforproposals.html) page as there could be updates.
+- **Months 1–2**: Infrastructure setup & initial knowledge base  
+- **Months 3–5**: MVP with console chat, retrieval, and citations  
+- **Months 6–9**: Expanded tools, multi-step reasoning, evaluation harness  
+- **Months 10–12**: CRAN release, docs, tutorials, community outreach  
 
-- Try to complete as many of the sections of this boilerplate document as possible. Each section is included either for practical purposes or has been specifically requested by the ISC
-- Add relevant additional sections, like the letter of support from an R Core member if you want a change to R itself
-- Proposals should be 2-5 pages when in PDF form
-- You *can* submit a proposal on your own, but it's really recommended to get engagement from the community (and the ISC) first
-- Proposals should be submitted through the form on the [ISC Grant Program](https://r-consortium.org/all-projects/callforproposals.html) page
+## Deliverables  
 
-## Making your proposal
+- `ChatR` R package v1.0 released on CRAN/R-universe  
+- IDE add-ins and command-line integration  
+- Error diagnosis module covering ≥80% of common R errors  
+- Knowledge base: Base R, recommended pkgs, 100+ CRAN pkgs, select Bioconductor  
+- Complete documentation, vignettes, and tutorials  
+- Community adoption (testers, contributors, forum mentions)  
 
-This is a boilerplate repository that you will need to fork, title appropriately and start filling in.
+## Budget & Support  
 
--   Use the "Use this template" button on GitHub
--   Create a new repository with a name to reflect your proposal
--   Create a new Positron/RStudio/IDE project from version control and use the git URL for the repo
--   Write an overview of the proposal instead of this boilerplate for the README
--   Start completing the relevant qmd pages of the proposal
--   Render `isc-proposal.qmd` to build the document locally
--   Regularly commit and push the changes to GitHub
--   Solicit feedback and contributions from others
+- **~$10,000 total**  
+  - ~90% developer compensation (20 hrs/week × 12 months)  
+  - ~10% tutorials, community engagement, incidental costs  
+- Funds disbursed milestone-by-milestone  
 
-### Automatically generate your proposal
+## Impact  
 
-This repository comes with a GitHub actions setup to automatically render your proposal to HTML and PDF formats.  To take advantage of it, you must publish the proposal to GitHub pages interactively the first time.
-
-From the command line, run `quarto publish gh-pages isc-proposal.qmd`.  After this, the GitHub action should run every time you push a commit to the main branch. Your rendered proposal can then be viewed at https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/
-
-## License
-
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">ISC Boilerplate</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/stephlocke" property="cc:attributionName" rel="cc:attributionURL">Stephanie Locke</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/RConsortium/isc-proposal" rel="dct:source">https://github.com/RConsortium/isc-proposal</a>.
+ChatR will:  
+- Lower barriers for newcomers  
+- Save experts time and improve reproducibility  
+- Enable AI assistance in privacy-sensitive and offline environments  
+- Strengthen R’s community infrastructure for long-term growth  

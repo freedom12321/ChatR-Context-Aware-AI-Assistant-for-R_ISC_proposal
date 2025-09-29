@@ -12,6 +12,16 @@ important because projects need to get up and running quickly.
  - [ ] Reporting framework
 -->
 
+In the initial phase, we will focus on quickly establishing the foundation for ChatR:  
+
+- **Collaboration & Infrastructure**: Set up a public GitHub repository following R Consortium guidelines, implement continuous integration (CI), and establish a test suite. Contributors will have clear guidelines for code style, contribution processes, and issue tracking.  
+- **License Decisions**: The project will adopt a permissive open-source license (MIT or GPL, depending on dependency compatibility) to maximize adoption while respecting CRAN and upstream package licensing.  
+- **Reporting Framework**: A transparent reporting system will be set up using GitHub milestones, quarterly ISC updates, and progress documentation.  
+- **Design & Prototyping**: Define the architecture for ChatR, run small technology spikes (e.g., embedding a subset of R documentation, testing retrieval queries), and prepare an MVP specification.  
+- **Community Engagement**: Announce project initiation on R Consortium channels (mailing lists, forums), inviting feedback and potential contributors early.  
+
+By the end of this phase, we expect to have (i) a working prototype interface (`chat_r()`) in the R console, (ii) an initial knowledge base of base R + major packages indexed, and (iii) a public roadmap with clear milestones.  
+
 
 ## Technical delivery
 <!--
@@ -21,6 +31,30 @@ provide at least a high-level description of the implementation.
 Including target dates is really important as you need to be committed
 and the ISC need to have a means of tracking delivery
 -->
+
+The technical work will follow iterative, milestone-driven development:  
+
+- **Milestone 1 – MVP Completion (Month 3)**  
+  Deliver a minimal interactive assistant with query classification, retrieval from base R docs, and basic answer generation. Demonstrate source citations and context retention for simple follow-up queries.  
+
+- **Milestone 2 – Enhanced RAG & Toolset (Months 4–5)**  
+  Expand the knowledge base to ~100 packages, implement CRAN package search, safe R code execution, and environment introspection tools. Demonstrate retrieval + execution workflows (e.g., plotting a user’s data).  
+
+- **Milestone 3 – Agent Autonomy & Reasoning (Months 6–7)**  
+  Implement a ReAct-style orchestration pipeline so ChatR can reason about queries, invoke tools in sequence, and refine responses. Add an error-diagnosis module to address common R errors.  
+
+- **Milestone 4 – Evaluation & Tuning (Month 8)**  
+  Build an evaluation harness using both automated LLM-as-a-judge scoring and user feedback. Optimize retrieval latency and refine source citation presentation.  
+
+- **Milestone 5 – Integration & Deployment (Months 9–10)**  
+  Package ChatR for CRAN submission and provide MCP/LangChain integration hooks. Develop an IDE add-in (e.g., RStudio gadget) for interactive use.  
+
+- **Milestone 6 – Documentation & Release (Months 11–12)**  
+  Deliver user and developer documentation, blog posts, and tutorials. Finalize v1.0 release and announce availability via R Consortium blog, RStudio community, and UseR! channels.  
+
+Progress will be reviewed bi-weekly with mentors and quarterly with ISC.  
+
+
 
 ## Other aspects
 
@@ -37,6 +71,17 @@ to be shared quarterly on the R Consortium blog.
  - [ ] UseR!
  - [ ] ISC meetings
 -->
+
+- **Accessibility & Licensing**: All code will be open source (MIT or GPL). Embedding indexes, prompts, and evaluation harnesses will also be released to enable reproducibility.  
+- **Hosting & Contribution**: ChatR will be hosted on GitHub with open issues and milestone tracking. CRAN distribution will ensure wide accessibility.  
+- **Publicity & Community Engagement**:  
+  - **Announcement post**: Project launch announcement on R Consortium channels.  
+  - **Progress posts**: Quarterly blog posts summarizing milestones, challenges, and demos.  
+  - **Social media**: Updates shared via R-Ladies, RStudio Community, and Mastodon/Twitter.  
+  - **UseR! Conference**: Present progress at UseR! or similar events.  
+  - **ISC Meetings**: Provide quarterly updates and final demo to ISC.  
+
+This open and visible process ensures transparency, reproducibility, and strong community buy-in.  
 
 ## Budget & funding plan
 
@@ -55,3 +100,28 @@ to the project and the project period. The ISC reserves the right to vet
 how funds are used for each project separately. If in doubt, please reach
 out to us.
 -->
+The total requested budget (~$10,000) will be allocated primarily to labor, with milestone-based disbursement:  
+
+- **Developer Compensation (~90%)**  
+  - Supports ~20 hours/week effort for 12 months by the principal developer (Hanxia Li).  
+  - Funds disbursed in two tranches: 50% at contract signing, 50% at project completion.  
+
+- **Community Engagement & Miscellaneous (~10%)**  
+  - Small allocation for tutorial creation (screencasts, design), community testing support (swag/gifts), and incidental costs (e.g., domain name for demo site).  
+  - Any unspent funds will remain unused.  
+
+**Disallowed costs** (travel, lodging, indirect costs, hardware) are excluded per ISC guidelines.  
+Cloud compute will not be funded unless project-specific and pre-approved by ISC; otherwise, development will rely on existing institutional resources or free credits.  
+
+**Milestone-based funding plan**:  
+
+| Milestone | Work to be Done | Expected Outcome | Budget Allocation |  
+|-----------|-----------------|------------------|-------------------|  
+| MVP Completion (Month 3) | Console prototype with retrieval & citation | Demo to ISC, early feedback | 15% |  
+| Enhanced RAG & Tools (Months 4–5) | Expanded KB + tool integrations | Advanced demo | 20% |  
+| Agent Autonomy (Months 6–7) | Multi-step reasoning, error handling | Usable assistant | 20% |  
+| Evaluation & Tuning (Month 8) | Evaluation harness + optimizations | Quality assurance | 15% |  
+| Integration & Deployment (Months 9–10) | CRAN packaging, IDE add-in | Public release candidate | 15% |  
+| Documentation & Release (Months 11–12) | Tutorials, final blog posts, v1.0 release | Final report & CRAN submission | 15% |  
+
+This plan ensures that funds are directly tied to measurable progress and successful outcomes.  

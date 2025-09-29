@@ -4,3 +4,26 @@
 This section provides a condensed view of the entire proposal, one page long.
 It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
 -->
+
+ChatR is a proposed open-source intelligent assistant designed specifically for the R programming ecosystem. Over 12 months, we will build ChatR as both an R package and IDE add-in, with optional command-line integration and offline capability for secure or air-gapped environments. Unlike generic AI copilots, ChatR will be deeply context-aware, operating directly inside the R environment to support complex multi-step workflows in statistics, bioinformatics, and social sciences.
+R programmers today face increasing complexity in managing workflows that span data import, transformation, modeling, visualization, and reporting across dozens of packages. Generic copilots can generate R code, but they lack session awareness, frequently hallucinate functions, and are unusable in secure or offline environments. This limits reproducibility, reliability, and adoption in sensitive domains.
+ChatR addresses this gap by delivering a context-aware, tier-sensitive AI assistant that will:
+Access the current R session context (objects, packages, and state).
+
+
+Use retrieval-augmented generation (RAG) to ground responses in official R documentation, vignettes, and authoritative references.
+
+
+Invoke R tools and functions directly (e.g., run code, search CRAN, inspect environments).
+
+
+Provide traceable, reproducible answers with citations, strengthening trust and transparency.
+
+
+Support offline use in sensitive or restricted environments.
+
+
+Align with modern LLM agent frameworks (e.g., LangChain, Roo Code, Cursor) while being fully integrated into R developer workflows.
+
+
+The outcome will be a sustainable, community-adopted R package with IDE plugins and offline deployability. By enabling accurate, grounded assistance for coding, data analysis, package selection, and error resolution, ChatR will reduce barriers for new users, save experts time, and strengthen the R ecosystem. Ultimately, this project advances reproducibility, usability, and accessibility in R, directly aligning with the R Consortium’s mission to support community infrastructure and long-term growth.

@@ -16,6 +16,29 @@ section.
 
 Include concrete actions you will take and estimated timeline.
 -->
+We propose to develop **ChatR**, a context-aware AI assistant that lives inside the R ecosystem.  
+ChatR addresses the gap between generic copilots and R-specific needs by combining retrieval-augmented generation (RAG) with R session awareness and tool invocation.  
+
+Users will interact through a chat interface (R console, RStudio add-in, or VS Code extension), asking questions in natural language. ChatR will classify the query, gather R context (objects, packages, errors), retrieve relevant documentation, optionally execute code, and return a grounded answer with citations.
+
+By integrating with R’s infrastructure and supporting offline use, ChatR empowers R programmers to:
+
+- Reduce time spent searching documentation and debugging.  
+- Increase accuracy and reproducibility by grounding in authoritative sources.  
+- Improve accessibility for newcomers in statistics, bioinformatics, and social science.  
+
+**Timeline**
+
+- **Months 1–2**: Design, infrastructure setup, initial knowledge base.  
+- **Months 3–5**: MVP delivery and early user testing.  
+- **Months 6–9**: Expanded tools, autonomous agent loop, evaluation.  
+- **Months 10–12**: Packaging, documentation, CRAN release, community outreach.  
+
+**Failure modes & recovery**
+
+- *LLM unreliability*: Mitigated by constraining outputs to retrieved documentation.  
+- *Performance bottlenecks*: Use efficient vector stores, quantized models, caching.  
+- *Scope creep*: Prioritize core workflows; defer advanced features to future work.  
 
 ## Detail
 <!--
@@ -30,12 +53,31 @@ Depending on project type the detail section should include:
 <!--
 What is the smallest thing you can build that delivers value to your users?
 -->
+The MVP (by Month 3) will demonstrate end-to-end functionality:
+
+- Command-line chat interface in R.  
+- Basic query classification (docs/help, code generation, error fix).  
+- Local knowledge base of base R + tidyverse docs indexed with embeddings.  
+- Simple tool calls (CRAN package search, safe code execution sandbox).  
+- Responses fact-checked against retrieved text and cited for transparency.  
+
+This validates feasibility and provides early feedback.  
+
 
 ### Architecture
 
 <!--
 What does the high-level architecture look like?
 -->
+ChatR will follow a modular design:
+
+- **Frontend**: R console loop, later RStudio add-in or Shiny gadget.  
+- **Core Orchestrator**: Classifies query, manages flow (ReAct-style).  
+- **Retrieval Module**: Embedding-based search (FAISS/R alternatives, `{ragnar}`).  
+- **Tool Interfaces**: Documentation search, CRAN search, code execution, environment inspection.  
+- **LLM Integration**: Start with GPT-4 API, evaluate open-source models for offline use.  
+- **Dialogue Management**: Maintain conversation memory for multi-turn queries.  
+- **MCP/LangChain compatibility**: Ensure extensibility and cross-ecosystem integration.  
 
 ### Assumptions
 
@@ -43,8 +85,45 @@ What does the high-level architecture look like?
 What assumptions are you making that, if proven false, would invalidate the project?
 -->
 
+- R documentation and package manuals provide sufficient knowledge.  
+- Current LLMs (API or open models) are capable of producing useful R answers when grounded.  
+- Users can install dependencies and, for offline mode, run a small local model.  
+- Community will engage with feedback and contributions.  
+- User environment: Users can install ChatR and its dependencies; for offline mode, machines should handle smaller local LLMs (7B–13B) and embedding indexes. Otherwise, an online API mode will be available.
+- Tool safety and trust: Code execution is restricted to the user’s R session, with safeguards and confirmation prompts to prevent unsafe actions.
+
+If any assumptions fail (e.g., offline models prove too resource-heavy), fallback options such as smaller KBs or API-based models will be provided.
+
 ### External dependencies
 
 <!--
 What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
 -->
+**R packages**
+
+- `{ragnar}` for RAG workflows (chunking, embeddings, retrieval).  
+- `{duckdb}` for efficient on-disk storage of embeddings.  
+- `{pkgsearch}`, `{tools}`, `{BiocPkgTools}` for CRAN/Bioconductor metadata.  
+- `{callr}`, `{processx}`, `{evaluate}` for safe code execution and output capture.  
+- `{rstudioapi}`, `{shiny}`, `{miniUI}` (optional) for IDE add-ins.  
+
+**Vector search**
+
+- FAISS (via Python/`reticulate`) as primary ANN backend.  
+- Fallbacks: `RcppHNSW` or `RcppAnnoy` for native approximate nearest neighbor search.  
+
+**LLM backends**
+
+- Online: OpenAI GPT-4/5 APIs for prototyping.  
+- Offline: Local OSS models (e.g., LLaMA, Code Llama) via `reticulate` or `{torch}`.  
+
+**Embeddings**
+
+- Online: OpenAI embedding API.  
+- Offline: `sentence-transformers` (via `reticulate`) or `{text2vec}` for lightweight baselines.  
+
+**Integration (optional)**
+
+- Model Context Protocol (MCP) or LangChain for interoperability with external orchestrators.  
+- `{plumber}` for exposing a local HTTP interface if editor integration requires it.  
+
