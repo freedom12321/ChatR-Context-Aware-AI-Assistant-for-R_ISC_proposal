@@ -1,4 +1,8 @@
-# ChatR: A Context-Aware R Programming Assistant  
+# ChatR: A Context-Aware R Programming Assistant 
+
+📄 **[View the detail proposal here](https://freedom12321.github.io/ChatR-Context-Aware-AI-Assistant-for-R_ISC_proposal/)**
+
+---
 
 ## Overview  
 
