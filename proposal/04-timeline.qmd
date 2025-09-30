@@ -71,7 +71,9 @@ out to us.
 -->
 
 Total request: **~$10,000**, allocated mainly to labor with milestone-based disbursement.  
+
 - **Developer (~90%)**: 20 hrs/week for 12 months; funds released in two tranches.(Hanxia Li)
+
 - **Community (~10%)**: Tutorials, testing support, incidental costs; unused funds forfeited.  
 
 **Milestone-based funding plan**:  
