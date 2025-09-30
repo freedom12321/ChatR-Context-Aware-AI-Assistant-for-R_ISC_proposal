@@ -1,6 +1,9 @@
 ---
 title: "ChatR: A Context-Aware R Programming Assistant"
 author:
+  - name: "Hanxia Li"
+    affiliations:
+      - "Georgia Institute of Technology"
   - name: "Michael Lawrence"
     affiliations:
       - "R Core"
@@ -8,9 +11,7 @@ author:
   - name: "Gabriel Becker"
     affiliations:
       - "R contributor"
-  - name: "Hanxia Li"
-    affiliations:
-      - "Georgia Institute of Technology"
+
 date: today
 date-format: iso
 format:

@@ -6,9 +6,10 @@ go? Briefly describe all participants and the skills they will bring
 to the project.
 -->
 
+Hanxia Li (Lead Developer, Georgia Institute of Technology) – Responsible for design, implementation, and delivery of ChatR.
+
 Michael Lawrence (Mentor, R Core, Genentech) – Provides guidance on R internals and package design.
 
 Gabriel Becker (Mentor, R contributor) – Advises on architecture, evaluation, and community engagement.
 
-Hanxia Li (Developer, Georgia Institute of Technology) – Responsible for design, implementation, and delivery of ChatR.
 
