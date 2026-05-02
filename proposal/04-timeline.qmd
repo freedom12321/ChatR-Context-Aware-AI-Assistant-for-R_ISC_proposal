@@ -12,7 +12,21 @@ important because projects need to get up and running quickly.
  - [ ] Reporting framework
 -->
 
-In the start-up phase we will set up GitHub infrastructure (repo, CI, license, reporting), define the architecture, test retrieval on R docs, and announce the project to the community—delivering a console prototype, initial knowledge base, and public roadmap.  
+During the start-up phase, the project will establish the foundation for open, modular, and mentor-reviewable development.
+
+The initial work will include:
+
+- Set up or reorganize the GitHub repository structure for skills, tools, examples, tests, and documentation.
+- Confirm the project license and contribution guidelines.
+- Define the initial `SKILL.md` format and folder structure.
+- Confirm the first set of high-priority skills with mentors.
+- Define the MCP tool interface and expected input/output format.
+- Create a simple reporting framework using GitHub issues, milestones, and weekly progress notes.
+- Identify a small set of representative R tasks for ad hoc mentor evaluation.
+- Prepare the initial roadmap and public project description.
+
+The expected outcome of this phase is a clear and usable development foundation: an organized repository, a confirmed scope, a public roadmap, and a shared understanding of what will be delivered first.
+
 
 ## Technical delivery
 <!--
@@ -23,14 +37,29 @@ Including target dates is really important as you need to be committed
 and the ISC need to have a means of tracking delivery
 -->
 
-- **M1 – MVP (Month 3):** Minimal assistant with query classification, base R retrieval, basic answers, citations, and context retention.  
-- **M2 – Enhanced Tools (Months 4–5):** Expand KB to ~100 packages; add CRAN search, safe code execution, and environment introspection.  
-- **M3 – Autonomy & Error Handling (Months 6–7):** ReAct-style orchestration; sequential tool use; error-diagnosis module.  
-- **M4 – Evaluation (Month 8):** LLM-judge scoring, user feedback, latency optimization, improved citation display.  
-- **M5 – Deployment (Months 9–10):** CRAN packaging, MCP/LangChain integration, IDE add-in (e.g., RStudio gadget).  
-- **M6 – Release (Months 11–12):** Documentation, tutorials, blog posts; v1.0 release and public announcement.  
+The technical delivery will focus on building reusable R skills and MCP-wrapped tools in small, testable milestones.
 
-**Progress tracking:** Bi-weekly mentor reviews and quarterly ISC updates.  
+- **M1 – Repository and First Skill Draft (Weeks 1–2):**  
+  Create the base repository structure, define the `SKILL.md` template, draft the Expert End-to-End Data Analyst skill, and implement an initial R session introspection function.
+
+- **M2 – Session and Dataset Introspection MVP (Weeks 3–4):**  
+  Implement tools for inspecting the current R session and datasets, including loaded packages, objects, object classes, dataset dimensions, variable names, data types, missingness, and simple summaries.
+
+- **M3 – MCP Wrapping and Example Workflow (Weeks 5–6):**  
+  Wrap the stable introspection functions as MCP tools or MCP-compatible interfaces. Add at least one realistic example workflow showing how an agent can use the Data Analyst skill and tools to understand an R analysis context.
+
+- **M4 – Local Package Library Inspection (Weeks 7–8):**  
+  Implement local package inspection functionality, including installed packages, versions, exported functions, documentation availability, and basic dependency information. Begin the R Package Developer skill.
+
+- **M5 – CRAN Package Index Query and Workflow Integration (Weeks 9–10):**  
+  Implement a CRAN package metadata query tool and connect session, dataset, local package, and CRAN context into more complete example workflows.
+
+- **M6 – Documentation, Testing, and Final Demo (Weeks 11–12):**  
+  Polish documentation, setup instructions, tests, example tasks, and final demo materials. Refine skills and tools based on mentor feedback and prepare the final report.
+
+
+**Progress tracking:** Progress will be tracked through GitHub issues, milestones, weekly update notes, and regular mentor reviews. Each milestone will produce a concrete deliverable that can be inspected, tested, or reviewed.
+
 
 
 ## Other aspects
@@ -49,7 +78,20 @@ to be shared quarterly on the R Consortium blog.
  - [ ] ISC meetings
 -->
 
-Open source (MIT/GPL) with GitHub/CRAN distribution and active community engagement (announcements, blogs, updates, conferences, ISC reports) to ensure transparency and reproducibility.  
+The project will be developed openly on GitHub so that mentors, R users, package developers, and future contributors can inspect progress and contribute feedback.
+
+The project will use an open-source license such as MIT or GPL, depending on mentor and community guidance. Documentation and examples will be written clearly so that users can understand each skill and tool independently.
+
+Community-facing activities may include:
+
+- A short announcement post introducing the project goals and roadmap.
+- Regular GitHub updates showing weekly progress.
+- Example-driven documentation for each skill and tool.
+- A final delivery post summarizing the completed work and future directions.
+- Sharing the project with R community channels, relevant open-source communities, and possible R Consortium updates.
+
+The project is designed to be reusable beyond one interface or one model. By focusing on `SKILL.md` files and MCP-wrapped tools, the outputs can be adapted by different agentic IDEs and future R assistant projects.
+
 
 
 ## Budget & funding plan
@@ -70,22 +112,27 @@ how funds are used for each project separately. If in doubt, please reach
 out to us.
 -->
 
-Total request: **~$10,000**, allocated mainly to labor with milestone-based disbursement.  
+Total request: **$3,000**, allocated primarily to development labor, documentation, testing, and demo preparation.
 
-- **Developer (~90%)**: 20 hrs/week for 12 months; funds released in two tranches.(Hanxia Li)
+The funding will support:
 
-- **Community (~10%)**: Tutorials, testing support, incidental costs; unused funds forfeited.  
+- Designing and implementing reusable R skills.
+- Developing MCP-wrapped tools for R session, dataset, package, and CRAN introspection.
+- Creating documentation, usage examples, and setup instructions.
+- Preparing representative evaluation tasks and final demo materials.
+- Maintaining the GitHub repository and weekly progress updates.
+
+Most of the budget will be used for developer labor. No funds are requested for travel, lodging, food, journal publication fees, or personal hardware.
 
 **Milestone-based funding plan**:  
 
+| Milestone | Timeline | Work to be Done | Expected Outcome | Budget |
+|---|---:|---|---|---:|
+| M1: Repository and First Skill Draft | Weeks 1–2 | Set up repository structure, define `SKILL.md` template, draft first skill, begin session introspection | Organized repo, first skill draft, initial tool prototype | 15% |
+| M2: Session and Dataset Introspection MVP | Weeks 3–4 | Build session and dataset introspection tools | Working MVP for exposing R session and dataset context | 20% |
+| M3: MCP Wrapping and Example Workflow | Weeks 5–6 | Wrap core tools with MCP-compatible interfaces and add example workflow | Agent-usable workflow demonstrating context-aware R assistance | 20% |
+| M4: Local Package Library Inspection | Weeks 7–8 | Build package inspection tool and begin R Package Developer skill | Tool for installed package/version/documentation awareness | 15% |
+| M5: CRAN Query and Workflow Integration | Weeks 9–10 | Build CRAN metadata query tool and integrate multiple context sources | More complete workflow for package-aware R assistance | 15% |
+| M6: Documentation, Testing, and Final Demo | Weeks 11–12 | Polish docs, examples, tests, demo, and final report | Final documented release and mentor-reviewable demo | 15% |
 
-| Milestone              | Timeline       | Work to be Done                        | Expected Outcome               | Budget |
-|------------------------|----------------|----------------------------------------|--------------------------------|--------|
-| MVP Completion         | Month 3        | Console prototype with retrieval & citation | Demo to ISC, early feedback   | 15%    |
-| Enhanced RAG & Tools   | Months 4–5     | Expanded KB + tool integrations        | Advanced demo                  | 20%    |
-| Agent Autonomy         | Months 6–7     | Multi-step reasoning, error handling   | Usable assistant               | 20%    |
-| Evaluation & Tuning    | Month 8        | Evaluation harness + optimizations     | Quality assurance              | 15%    |
-| Integration & Deployment | Months 9–10 | CRAN packaging, IDE add-in             | Public release candidate       | 15%    |
-| Documentation & Release | Months 11–12 | Tutorials, blog posts, v1.0 release    | Final report & CRAN submission | 15%    |
-
-This plan ensures that funds are directly tied to measurable progress and successful outcomes.  
+This milestone-based plan keeps the project realistic and measurable. Instead of promising a complete production assistant or CRAN release in the initial period, the project focuses on reusable infrastructure that can support future ChatR development.

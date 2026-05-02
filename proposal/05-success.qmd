@@ -9,7 +9,27 @@ thorough understanding going in of what the risks are to delivery
 What does success look like?
 -->
 
-- Release **ChatR v1.0** (CRAN/Universe) with context-aware assistance, online/offline modes, error diagnosis, broad KB coverage, documentation, and evidence of community adoption.  
+The project will be considered successful when it delivers a usable, documented, and mentor-reviewable foundation for modular R assistance.
+
+By the end of the project, the repository should include:
+
+- At least **two reusable R-focused skills** written in `SKILL.md` format:
+  - Expert End-to-End Data Analyst
+  - R Package Developer
+- A draft or stretch version of the **R Core Contributor** skill, if time permits.
+- Working tools for:
+  - R session introspection
+  - Dataset introspection
+  - Local package library inspection
+  - CRAN package metadata querying
+- MCP-compatible wrappers or clearly documented MCP-ready interfaces for the core tools.
+- Example workflows showing how an agent can use the skills and tools in realistic R tasks.
+- Documentation explaining setup, usage, tool outputs, and extension paths.
+- Tests or validation examples for the core tools.
+- A final demo and short report summarizing completed work, limitations, and future directions.
+
+The goal is not to release a full production assistant during this phase. The goal is to create reusable infrastructure that can support future ChatR development across agentic IDEs and R workflows.
+
 
 ## Measuring success
 <!--
@@ -17,7 +37,25 @@ How will we know when success is achieved, what markers can we use
 along the way
 -->
 
-- Achieve ≥80% accuracy vs baseline, positive user feedback (≥4/5), ≥50 testers with external contributions, and case studies showing time savings and novice accessibility.  
+Success will be measured using practical and reviewable markers:
+
+- **Functionality:** Each core tool can run on realistic R examples and return structured, understandable output.
+- **Usability:** Mentors can test the skills and tools without needing to understand the entire system architecture.
+- **Modularity:** Each skill and tool can be used independently, while also supporting combined workflows.
+- **Agent usefulness:** Example workflows show that agents can use session, dataset, package, or CRAN context to produce more relevant R assistance.
+- **Documentation quality:** Users can install, run, and understand the project from the README and examples.
+- **Testing:** Core introspection functions include tests or validation examples.
+- **Progress transparency:** GitHub issues, milestones, and update notes show incremental development.
+- **Mentor feedback:** Mentor comments are incorporated into skill design, tool outputs, and examples.
+
+Suggested measurable targets:
+
+- At least **2 complete `SKILL.md` files**.
+- At least **4 working context tools**.
+- At least **3 realistic example workflows**.
+- At least **1 final demo** showing end-to-end use.
+- At least **basic tests or validation examples** for each major tool.
+- At least **weekly progress updates** during the project period.
 
 
 ## Future work
@@ -26,4 +64,15 @@ How could this be extended / developed in the future by yourself
 and/or the community in general?
 -->
 
-- Sustain through a community-led team, improved AI models, cross-language expansion, deeper IDE integration, community-driven KB, new features (multi-modal, learning mode), and educational impact studies.  
+Future work could extend ChatR Skills in several directions:
+
+- Deeper integration with RStudio, VS Code, Positron, Cursor, Windsurf, Claude Code, and Codex.
+- A full R package or CRAN/Universe release after the core tools are stable.
+- Additional domain-specific R skills, such as biostatistics, causal inference, Bayesian modeling, machine learning, Shiny development, and package maintenance.
+- Richer package recommendation and documentation-grounding workflows.
+- More advanced evaluation using benchmark tasks, user studies, or expert review.
+- Privacy-conscious or local-first workflows for users in healthcare, government, education, and other restricted environments.
+- Community-contributed skills and examples for different R workflows.
+- Cross-language expansion to Python, Julia, or SQL while preserving the same modular skills-and-tools architecture.
+
+In the long term, ChatR Skills can become the reusable infrastructure layer for context-aware AI assistance in R, supporting many interfaces rather than a single closed assistant.

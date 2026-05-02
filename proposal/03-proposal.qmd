@@ -17,20 +17,29 @@ section.
 Include concrete actions you will take and estimated timeline.
 -->
 
-We propose **ChatR**, a context-aware AI assistant built inside the R ecosystem that combines retrieval-augmented generation (RAG), session awareness, and tool invocation. Through a chat interface (R console, RStudio add-in, or VS Code), ChatR classifies queries, gathers context, retrieves documentation, executes code when needed, and returns cited answers. By integrating with R and supporting offline use, ChatR will reduce time spent on debugging and documentation search, improve reproducibility with authoritative sources, and make R more accessible for newcomers in statistics, bioinformatics, social sciences, etc.  
+We propose to develop **ChatR Skills**, a modular infrastructure project for improving AI assistance in R programming. The project will create reusable R-focused skills and lightweight MCP-wrapped tools that allow language-model-based agents to inspect R sessions, understand datasets, examine local packages, and query CRAN package metadata.
+
+The project shifts ChatR from a single monolithic assistant toward reusable infrastructure. Each skill and tool will be independently usable, testable, and reviewable. This makes the project practical for incremental development and useful across multiple agentic environments such as Claude Code, Cursor, Windsurf, Codex, and future R-oriented AI tools.
+
+The benefit to the R community is that ChatR Skills does not lock users into one interface. Instead, it creates reusable components that can support many R workflows: data analysis, package development, documentation lookup, package recommendation, and contribution-oriented work. By exposing structured R context to AI agents, the project can reduce hallucinated code, improve package-aware answers, and make AI assistance more reliable for real R users.
+
 
 **Timeline**
 
-- **Months 1–2**: Design, infrastructure setup, initial knowledge base.  
-- **Months 3–5**: MVP delivery and early user testing.  
-- **Months 6–9**: Expanded tools, autonomous agent loop, evaluation.  
-- **Months 10–12**: Packaging, documentation, CRAN release, community outreach.  
+- **Community Bonding Period**: Confirm mentor priorities, define the initial skill/tool scope, set up the repository structure, and identify representative evaluation tasks.
+- **Weeks 1–2**: Build the base repository structure, implement the first R session introspection tool, and draft the first `SKILL.md` specification.
+- **Weeks 3–4**: Implement dataset introspection and refine the Expert End-to-End Data Analyst skill.
+- **Weeks 5–6**: Implement local package library inspection and begin the R Package Developer skill.
+- **Weeks 7–8**: Implement CRAN package index querying and connect the tools into example workflows.
+- **Weeks 9–10**: Polish skills, documentation, tests, examples, and final demo materials.
 
 **Failure modes & recovery**
 
-- *LLM unreliability*: Mitigated by constraining outputs to retrieved documentation.  
-- *Performance bottlenecks*: Use efficient vector stores, quantized models, caching.  
-- *Scope creep*: Prioritize core workflows; defer advanced features to future work.  
+- *Tool outputs are too verbose or hard for agents to use*: Recover by simplifying outputs into structured summaries, limiting default fields, and adding optional detailed modes.
+- *MCP integration is more difficult than expected*: Recover by first implementing tool logic as simple R functions or command-line utilities, then wrapping the stable functions with MCP.
+- *Scope creep across too many skills*: Prioritize the Expert End-to-End Data Analyst skill and the core introspection tools first; keep the R Core Contributor skill as a stretch goal.
+- *CRAN package query is too broad or noisy*: Start with a small package metadata index and simple search/ranking, then expand after mentor feedback.
+- *Agent behavior remains unreliable even with tools*: Use constrained skill instructions, structured tool outputs, examples, and regression tasks to make behavior more predictable.
 
 ## Detail
 <!--
@@ -46,13 +55,16 @@ Depending on project type the detail section should include:
 What is the smallest thing you can build that delivers value to your users?
 -->
 
-By Month 3, ChatR will demonstrate end-to-end functionality with:  
+By the first major milestone, ChatR Skills will demonstrate value through a small but working modular system:
 
-- R console chat interface.  
-- Query classification (docs/help, code, error fix).  
-- Knowledge base of base R + tidyverse docs (embeddings).  
-- Basic tools: CRAN search, safe code execution sandbox.  
-- Responses grounded in retrieved text with citations.  
+- One reusable `SKILL.md` file for the **Expert End-to-End Data Analyst** skill.
+- A basic R session introspection tool that reports loaded packages, objects, object classes, search path, and session information.
+- A basic dataset introspection tool that reports dimensions, variable names, data types, missingness, and simple summaries.
+- One or two realistic example workflows showing how an AI agent can use the skill and tools to understand an R analysis context.
+- Initial documentation so mentors and users can test the system early.
+
+This MVP is intentionally smaller than a full R assistant. Its goal is to prove that structured R context and reusable skill instructions can improve agent performance in realistic R tasks.
+
 
 ### Architecture
 
@@ -60,13 +72,66 @@ By Month 3, ChatR will demonstrate end-to-end functionality with:
 What does the high-level architecture look like?
 -->
 
-ChatR will use a modular design with:  
+### Core Components
 
-- **Interface:** R console first, then IDE add-ins (RStudio, Shiny).  
-- **Core & Retrieval:** Orchestrator with embedding search (FAISS or R alternatives).  
-- **Tools:** Docs/CRAN search, code execution, environment inspection.  
-- **LLM & Dialogue:** Online APIs or offline OSS models with multi-turn memory.  
-- **Integration:** MCP/LangChain for extensibility; plumber for local API.  
+The project will focus on the following components.
+
+#### 1. R Session Introspection Tool
+
+This tool will help agents understand the current R environment by exposing structured information such as:
+
+- loaded packages
+- session information
+- objects in the current environment
+- object classes and dimensions
+- search path
+- relevant analysis state
+
+This is important because many AI-generated R answers fail when they do not match the user’s actual session.
+
+#### 2. Dataset Introspection Tool
+
+This tool will summarize datasets in a compact and agent-friendly way, including:
+
+- number of rows and columns
+- variable names
+- variable types
+- missingness
+- basic summaries
+- candidate outcome and predictor variables when appropriate
+
+This supports more accurate analysis planning, debugging, and workflow guidance.
+
+#### 3. Local Package Library Inspection Tool
+
+This tool will inspect installed R packages and local documentation, including:
+
+- installed package names and versions
+- exported functions
+- documentation availability
+- vignettes or examples when available
+- dependency information
+
+This helps agents avoid recommending functions or arguments that are not available in the user’s environment.
+
+#### 4. CRAN Package Index Query Tool
+
+This tool will help agents search CRAN package metadata for task-relevant packages. It will support workflows such as:
+
+- finding candidate packages for a task
+- comparing package purpose and metadata
+- identifying documentation sources
+- supporting package-aware recommendations
+
+This component is more realistic than trying to build a large static knowledge base of all R packages.
+
+#### 5. Reusable R Skills
+
+The initial skills will be:
+
+- **Expert End-to-End Data Analyst:** Supports dataset inspection, workflow planning, modeling guidance, visualization choices, and reporting.
+- **R Package Developer:** Supports package structure review, documentation, exports, dependencies, and development conventions.
+- **R Core Contributor:** Supports contribution-oriented workflows related to R itself, beginning with a small scope and expanding if feasible.
 
 ### Assumptions
 
@@ -74,10 +139,21 @@ ChatR will use a modular design with:
 What assumptions are you making that, if proven false, would invalidate the project?
 -->
 
-- **User environment:** ChatR installable; offline mode with small models or fallback to API.  
-- **Tool safety:** Code restricted to R session with safeguards.  
+The project makes several assumptions:
 
-If any assumptions fail (e.g., offline models prove too resource-heavy), fallback options such as smaller KBs or API-based models will be provided.
+- **Structured context improves agent reliability:** The project assumes that agents perform better when given structured session, dataset, package, and CRAN context rather than relying only on user-written prompts.
+- **MCP is a suitable integration layer:** The project assumes MCP-wrapped tools are a practical way to expose R context across different agentic environments.
+- **Small tools are easier to evaluate than one large assistant:** The project assumes mentors and users can review progress more effectively when each tool and skill is independently usable.
+- **A limited set of high-value skills is more useful than many shallow features:** The project assumes that focusing first on data analysis and package development will deliver more value than trying to cover every possible R workflow.
+
+If any assumptions fail, the project has fallback options:
+
+- If MCP wrapping is difficult, the core functions will first be delivered as standalone R functions or command-line tools, then wrapped later.
+- If tool outputs are not useful for agents, the project will simplify and standardize them based on mentor feedback.
+- If the R Core Contributor skill is too broad, it will be treated as a stretch goal while the Data Analyst and Package Developer skills remain the core deliverables.
+- If CRAN-wide search is too broad, the first version will use a smaller metadata index and expand gradually.
+
+
 
 ### External dependencies
 
@@ -85,7 +161,15 @@ If any assumptions fail (e.g., offline models prove too resource-heavy), fallbac
 What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
 -->
 
-FAISS (with Rcpp fallbacks) for retrieval, OpenAI or local OSS models for LLMs/embeddings, and MCP/LangChain with plumber for integration.  
+The project will depend on a small number of external tools and ecosystems:
+
+- **R and CRAN metadata:** Used for package information, documentation, and package discovery.
+- **MCP tooling:** Used to expose R-specific context to agentic IDEs and model-based tools.
+- **R packages for inspection and metadata:** Possible dependencies may include packages for session information, package metadata, documentation parsing, and JSON output.
+- **Agentic IDEs or coding agents:** Claude Code, Cursor, Windsurf, Codex, or similar environments may be used for testing workflows.
+- **GitHub:** Used for open development, issue tracking, documentation, examples, and mentor review.
+
+The project will avoid depending on one specific proprietary model or one specific IDE. The goal is to keep the core skills and tools portable.
 
 
 

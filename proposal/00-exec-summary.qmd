@@ -6,19 +6,25 @@ It should be a comprehensive high-level overview that captures the essence of th
 -->
 
 ## Overview  
-**ChatR** is an open-source, context-aware assistant for the R ecosystem. In **12 months**, we will deliver an **R package** and **IDE add-in** (with CLI and offline mode) for secure environments. Unlike generic copilots, ChatR runs **inside R**, accessing session objects, packages, and errors to provide accurate, reproducible support for workflows in statistics, bioinformatics, social sciences, etc.  
+ChatR Skills will develop a modular collection of reusable R-focused skills and MCP-wrapped tools that improve AI assistance for R programming across agentic IDEs such as Claude Code, Cursor, Windsurf, and Codex.
+
+Rather than building a single monolithic assistant, this project will create independent, testable components that help language-model-based agents understand real R workflows. These components will expose structured context about the current R session, datasets, local package libraries, and CRAN package metadata.
 
 ## Goals & Methods  
-- **Reliable help:** Reduce hallucinations; ground answers in official docs with citations.  
-- **Offline-ready, community-led:** Works in restricted settings; developed openly.  
-- **Core methods:** R session integration, RAG, safe execution, and agent compatibility
+The project will focus on three goals:
+- Develop reusable R skills in SKILL.md format.
+- Build lightweight MCP-wrapped tools for R session, dataset, package, and CRAN introspection.
+- Provide example workflows and tests so mentors can evaluate progress incrementally.
 
 ## Outcomes  
-- **Adoption & Efficiency:** R package + IDE plugins with offline support; faster onboarding and expert time savings.  
-- **Reproducibility:** Grounded, cited, and logged assistance. 
+By the end of the project, ChatR Skills will provide a practical foundation for context-aware R assistance across multiple agentic environments. The work will be transparent, inspectable, and extensible, allowing future contributors to build additional R skills and tools on top of the same infrastructure.
 
 ## Deliverables  
-- A fully functional, community-adopted R package with IDE plugins and offline support.  
+- A reusable set of R skills in SKILL.md format.
+- MCP-wrapped tools for session, dataset, package, and CRAN introspection.
+- Documentation and usage examples.
+- Representative example tasks for ad hoc mentor evaluation.
+- A public GitHub repository showing incremental weekly progress.
 
 ## Budget  
-- **~$10,000 total** — ~90% developer effort; ~10% tutorials and community engagement.  
+- **~$3000 total** — ~90% developer effort; ~10% tutorials and community engagement.  

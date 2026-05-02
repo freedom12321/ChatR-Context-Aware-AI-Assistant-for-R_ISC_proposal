@@ -22,27 +22,61 @@ It is important to cover:
 ```
 
 - **What the problem is**  
-  - R workflows (import → transform → model → visualize → report) are complex and fragmented.  
-  - Generic copilots lack session awareness, hallucinate functions, and cannot run offline, limiting reproducibility and use in secure settings.  
+Modern AI coding assistants are useful for simple R questions, but they remain unreliable for realistic R workflows. Many R tasks depend on information that the model cannot infer from its training data alone: the user’s current R session, object structure, loaded packages, installed package versions, local documentation, and the analytical state of the project.
+
+This creates several problems:
+
+- Agents hallucinate functions or package APIs.
+- Agents provide code that does not match the user’s actual objects or data.
+- Agents cannot reliably inspect local package libraries or documentation.
+- Agents struggle to guide multi-step R workflows from data inspection to modeling and reporting.
+- Existing tools are often tied to one interface rather than being reusable across agentic IDEs.
+
+The problem is not only that R needs another chat interface. The deeper problem is that AI agents need modular, structured, and inspectable ways to access R-specific context.
+
+Solving this problem would make AI assistance for R more reliable, reusable, and extensible. Instead of building one large assistant, this project will create reusable skills and MCP-wrapped tools that can support many agent environments.
 
 - **Who it affects**  
-  - *Novices*: Steep learning curve, opaque errors.  
-  - *Experts*: Time lost context-switching and debugging.  
-  - *High-stakes users*: (healthcare, government) blocked from cloud copilots due to privacy/security.  
+  This problem affects several groups of R users:
+- **Novices:** New R users face a steep learning curve, unfamiliar package ecosystems, and opaque error messages. They often struggle to understand whether a problem comes from syntax, data structure, package behavior, missing dependencies, or statistical assumptions.
+- **Experts:** Experienced R users, data analysts, and researchers lose time switching between the R console, documentation, package websites, local files, and AI chat interfaces. Even when they know the right statistical direction, debugging and package-specific details can interrupt their workflow.
+- **Package developers and contributors:** Developers need support that understands package structure, exported functions, documentation, dependencies, examples, and development conventions. General-purpose AI assistants often give generic suggestions without inspecting the actual package context.
+- **High-stakes and restricted-environment users:** Users in healthcare, government, education, and other sensitive settings may be limited in how much code, data, or project context they can send to cloud-based AI tools. They still need reliable programming support, but the support must be transparent, inspectable, and compatible with privacy-conscious workflows.
 
 - **Why it is a problem**  
-  - Slows research, reduces reproducibility, and raises barriers to adoption.  
-  - Offline/secure users are excluded from AI support.  
+
+The main problem is not simply that R needs another chatbot. The deeper issue is that current AI coding assistants often lack structured access to the R-specific context needed for reliable help.
+
+This leads to several practical problems:
+
+- AI assistants may hallucinate R functions, package names, or arguments.
+- Suggested code may not match the user’s installed package versions or actual data objects.
+- Users must manually copy console output, object summaries, errors, and documentation into chat.
+- Debugging becomes slower and more fragmented.
+- Package recommendations may be generic instead of task-specific.
+- Reproducibility suffers when answers ignore package versions, documentation, and citation context.
+- Users in restricted environments may be excluded from the benefits of AI-assisted programming.
+
+Together, these issues slow research, reduce confidence in AI-generated code, increase barriers for novice users, and limit the usefulness of AI tools for serious R workflows.
 
 - **What solving enables**  
-  - Productivity gains through faster debugging and search.  
-  - Reproducibility with version- and citation-aware answers.  
-  - Accessibility for new users and restricted environments.  
+
+Solving this problem would make AI assistance for R more reliable, reusable, and context-aware.
+
+A modular ChatR Skills system would enable:
+
+- Faster debugging through structured R session and dataset introspection.
+- Better package-aware recommendations using local package and CRAN metadata.
+- More reproducible answers by incorporating package versions, documentation, and citation-aware context.
+- Lower barriers for novice R users through workflow-level guidance rather than isolated code snippets.
+- Higher productivity for experienced users by reducing context-switching across tools.
+- Better support for package developers through package-structure and documentation-aware assistance.
+- A path toward privacy-conscious workflows by separating local context inspection from the language model interface.
+- Reusable infrastructure that can work across agentic IDEs such as Claude Code, Cursor, Windsurf, and Codex.
+
 
 - **Existing work**  
-  - {ragnar} (RAG), {tidyprompt} (prompt structuring), {ellmer} (LLM integration), {btw} (environment capture).  
-  - Useful but fragmented; none provide a unified, session-aware, offline-ready assistant.  
-
+Several existing tools address parts of this problem, but they do not fully solve the need for modular, reusable, context-aware R assistance.R users already rely on RStudio, VS Code, CRAN documentation, package vignettes, Stack Overflow, Posit resources, and CRAN Task Views. These resources are useful, but they require users to manually search, interpret, and connect information to their current analysis state.General AI coding assistants such as ChatGPT, Claude, Cursor, Windsurf, Codex, and GitHub Copilot can generate R code and explain common errors. However, they often lack direct awareness of the user’s current R session, installed package versions, object structures, local package documentation, and analysis workflow.Newer agentic development environments and the Model Context Protocol show that AI assistants can become more useful when connected to external tools. However, R still needs focused, reusable skills and MCP-wrapped tools that expose R-specific context in a structured and inspectable way.ChatR Skills builds on this existing work by focusing on the reusable infrastructure layer: R-focused `SKILL.md` files and lightweight MCP tools for session, dataset, package, and CRAN introspection. Instead of building one closed assistant, the project aims to make R assistance more modular, testable, and portable across different agentic environments.
 
 
 
